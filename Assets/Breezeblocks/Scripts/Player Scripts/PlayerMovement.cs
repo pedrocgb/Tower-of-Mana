@@ -147,11 +147,10 @@ namespace Breezeblocks.PlayerScripts
             {
                 if (_coyoteTimeCounter > 0f || _jumpsRemaining > 0)
                 {
-                    SetLinearVelocity(new Vector2(_rb.linearVelocity.x, _jumpForce.Value));
+                    SetLinearVelocity(new Vector2(_rb.linearVelocity.x, _jumpForce.Value * _player.GetManaPower(_player.Stats.JumpManaMultiplier)));
                     _coyoteTimeCounter = 0f;
                     _jumpsRemaining--; // Consume a jump
-
-                    _player.SpendMana(10f);
+                    
                 }
             }
 
@@ -207,9 +206,7 @@ namespace Breezeblocks.PlayerScripts
             float originalGravity = _rb.gravityScale;
             _rb.gravityScale = 0f;
 
-            _player.SpendMana(50f);
-
-            SetLinearVelocity(_lastMoveDir * _dashForce.Value);
+            SetLinearVelocity(_lastMoveDir * _dashForce.Value * _player.GetManaPower(_player.Stats.DashManaMultiplier));
 
             yield return new WaitForSeconds(_dashDuration);
 

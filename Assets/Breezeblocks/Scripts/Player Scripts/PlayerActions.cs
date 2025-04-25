@@ -13,12 +13,9 @@ namespace Breezeblocks.PlayerScripts
         private PlayerBase _player = null;
         private CharacterStat _attackSpeed;
 
-        [FoldoutGroup("Attack Variables")]
+        [BoxGroup("Weapon")]
         [SerializeField]
-        private string _attackPrefab = string.Empty;
-        [FoldoutGroup("Attack Variables")]
-        [SerializeField]
-        private float _attackDelay = 0.25f;
+        private Weapon _equippedWeapon = null;
 
         private float _attackTimeStamp = 0f;
         #endregion
@@ -48,22 +45,7 @@ namespace Breezeblocks.PlayerScripts
         private void HandleInputs()
         {
             if (_player.Input.GetButtonDown("Attack") && _attackTimeStamp <= Time.time && _player.IsAttacking == false)
-                StartCoroutine(Attack());
-        }
-
-        private IEnumerator Attack()
-        {
-            _player.IsAttacking = true;
-            _attackTimeStamp = Time.time + _player.Stats.AttackSpeed;
-            ObjectPooler.SpawnFromPool(_attackPrefab, transform.position, Quaternion.identity);
-
-            _player.MyAnimator.SetTrigger("Attack");
-
-            _player.SpendMana(25f);
-
-           yield return new WaitForSeconds(_attackDelay);
-
-            _player.IsAttacking = false;
+                _equippedWeapon.Attack(transform, _player.GetManaPower(_equippedWeapon.AttackManaMultiplier));
         }
         #endregion
 

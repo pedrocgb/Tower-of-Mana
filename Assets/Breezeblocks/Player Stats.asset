@@ -17,6 +17,9 @@ MonoBehaviour:
   _baseManaRechargeRate: 0.1
   _baseMoveSpeed: 6
   _baseJumpForce: 8
+  _jumpManaMultiplier: 0.012
   _baseDashForce: 20
   _baseDashCooldown: 0.5
+  _dashManaMultiplier: 0.01
   _baseAttackSpeed: 1
+  _attackManaMultiplier: 0.1

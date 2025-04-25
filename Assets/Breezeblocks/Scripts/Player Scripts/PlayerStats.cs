@@ -30,6 +30,10 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private float _baseJumpForce = 0f;
     public float JumpForce => _baseJumpForce;
+    [BoxGroup("Jumping")]
+    [SerializeField]
+    private float _jumpManaMultiplier = 0f;
+    public float JumpManaMultiplier => _jumpManaMultiplier;
 
     // ----------------------------------------------------------------------
 
@@ -41,6 +45,10 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private float _baseDashCooldown = 0f;
     public float DashCooldown => _baseDashCooldown;
+    [BoxGroup("Dash")]
+    [SerializeField]
+    private float _dashManaMultiplier = 0f;
+    public float DashManaMultiplier => _dashManaMultiplier;
 
     // ----------------------------------------------------------------------
 
@@ -48,6 +56,10 @@ public class PlayerStats : ScriptableObject
     [SerializeField]
     private float _baseAttackSpeed = 0f;
     public float AttackSpeed => _baseAttackSpeed;
+    [BoxGroup("Attack")]
+    [SerializeField]
+    private float _attackManaMultiplier = 0f;
+    public float AttackManaMultiplier => _attackManaMultiplier;
 
     // ----------------------------------------------------------------------
 }

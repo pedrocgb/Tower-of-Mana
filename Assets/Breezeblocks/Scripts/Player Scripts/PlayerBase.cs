@@ -83,15 +83,16 @@ namespace Breezeblocks.PlayerScripts
             UpdateUI();
         }
 
-        public void SpendMana(float amount)
+        public float GetManaPower(float Multiplier)
         {
-            _currentMana -= amount;
-
-            if (_currentMana < 0)
-                _currentMana = 0f;
-
+            float manaPower = _currentMana * Multiplier;
+            _currentMana = 0f;
             UpdateUI();
+
+            return manaPower;
         }
+
+
 
         // ----------------------------------------------------------------------
 
